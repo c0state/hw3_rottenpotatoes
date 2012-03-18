@@ -23,7 +23,16 @@ Background: movies have been added to database
 
 Scenario: sort movies alphabetically
   # your steps here
+  When I check all ratings
+  And I press "ratings_submit"
+  And I follow "title_header"
+  Then I should see "Aladdin" before "Amelie"
+  And I should see "The Incredibles" before "The Terminator"
 
 Scenario: sort movies in increasing order of release date
   # your steps here
-
+  When I check all ratings
+  And I press "ratings_submit"
+  And I follow "release_date_header"
+  Then I should see "The Terminator" before "Aladdin"
+  And I should see "When Harry Met Sally" before "The Help"
