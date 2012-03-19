@@ -40,6 +40,11 @@ end
 #  "When I uncheck the following ratings: PG, G, R"
 #  "When I check the following ratings: G"
 
+When /I (un)?check all ratings/ do |uncheck|
+  check_string = uncheck ? :uncheck : :check
+  step %Q{I #{check_string} the following ratings: G, PG, PG-13, R, NC-17}
+end
+
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
