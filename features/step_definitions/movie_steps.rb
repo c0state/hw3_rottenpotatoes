@@ -50,7 +50,7 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
   check_string = uncheck ? :uncheck : :check
-  rating_list.split(/, */).each { |rating|
+  rating_list.strip.split(/ *, */).each { |rating|
     step %Q{I #{check_string} "ratings_#{rating}"}
   }
 end
